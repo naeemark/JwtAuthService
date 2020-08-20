@@ -4,7 +4,6 @@ import com.naeemark.jas.models.AuthResponse;
 import com.naeemark.jas.models.SignupRequest;
 import com.naeemark.jas.models.User;
 import com.naeemark.jas.services.AuthService;
-import com.naeemark.jas.utils.JwtUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -64,12 +63,8 @@ public class SignupController {
 
         User user = authService.register(signupRequest);
         if (user != null) {
-            String accessToken = JwtUtils.generateJwtToken(user);
-            AuthResponse authResponse = new AuthResponse(accessToken, new User(user.getId(), user.getPassword()));
-            logger.info(authResponse.toString());
-            return authResponse;
+            return authService.getAuthResponse(user);
         }
         throw new ResponseStatusException(HttpStatus.EXPECTATION_FAILED);
-
     }
 }
