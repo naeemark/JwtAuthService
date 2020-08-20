@@ -1,4 +1,4 @@
-package com.naeemark.jas.model;
+package com.naeemark.jas.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,11 +11,11 @@ import lombok.ToString;
  * Created on: 2020-08-20
  */
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @ToString
-public class Health {
+public class AuthResponse {
 
-    private String serviceName;
-    private String status;
+    private String accessToken;
+    private User user;
 }

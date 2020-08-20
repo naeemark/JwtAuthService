@@ -1,7 +1,5 @@
-package com.naeemark.jas.controller;
+package com.naeemark.jas.api.health;
 
-import com.naeemark.jas.JwtAuthServiceApplication;
-import com.naeemark.jas.model.Health;
 import com.naeemark.jas.utils.Constants;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -17,20 +15,20 @@ import org.springframework.web.bind.annotation.RestController;
  * <p>
  * Created on: 2020-08-20
  */
-@Api(tags = "Auth Service Health")
+@Api(tags = "0 - HealthResponse Check", description = "Provides health status of the service")
 @RestController
 @RequestMapping("/api")
 public class HealthController {
 
-    private static final Logger logger = LoggerFactory.getLogger(JwtAuthServiceApplication.class);
+    private static final Logger logger = LoggerFactory.getLogger(HealthController.class);
 
-    @ApiOperation(value = "Health Check", notes = "Gets health status of the service", response = Health.class)
+    @ApiOperation(value = "HealthResponse Check", notes = "Gets health status of the service", response = HealthResponse.class)
     @GetMapping(value = "/health")
-    public Health checkHealth() {
+    public HealthResponse checkHealth() {
 
-        Health health = new Health(Constants.SERVICE_NAME, "OK");
+        HealthResponse healthResponse = new HealthResponse(Constants.SERVICE_NAME, "OK");
 
-        logger.info(health.toString());
-        return health;
+        logger.info(healthResponse.toString());
+        return healthResponse;
     }
 }
