@@ -4,6 +4,7 @@ import com.naeemark.jas.models.AuthResponse;
 import com.naeemark.jas.models.SignupRequest;
 import com.naeemark.jas.models.User;
 import com.naeemark.jas.services.AuthService;
+import com.naeemark.jas.utils.JwtUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -51,22 +52,24 @@ public class SignupController {
     @ApiOperation(value = "Signup", response = AuthResponse.class, tags = {"1 - Sign Up"})
     @ApiResponses(value = {
             @ApiResponse(code = 304, message = "Operation was not successful"),
-            @ApiResponse(code = 400, message = "Validation Error")
+            @ApiResponse(code = 400, message = "Validation Error"),
+            @ApiResponse(code = 409, message = "Attribute Conflict"),
+            @ApiResponse(code = 422, message = "Request not processable")
     })
     @PostMapping(value = "/signup")
-    public AuthResponse signUp(@Valid @RequestBody SignupRequest signupRequest)  {
+    public AuthResponse signUp(@Valid @RequestBody SignupRequest signupRequest) {
 
         logger.info(signupRequest.toString());
 
         User user = authService.register(signupRequest);
-        if (user == null) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        if (user != null) {
+            String accessToken = JwtUtils.generateJwtToken(user);
+            AuthResponse authResponse = new AuthResponse(accessToken, new User(user.getId(), user.getName()));
+            logger.info(authResponse.toString());
+            return authResponse;
         }
-        AuthResponse authResponse = new AuthResponse("Hi...you are registered" + user.toString());
+        throw new ResponseStatusException(HttpStatus.EXPECTATION_FAILED);
 
-        logger.info(authResponse.toString());
-
-        return authResponse;
 
     }
 }

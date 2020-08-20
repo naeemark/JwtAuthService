@@ -17,4 +17,5 @@ import lombok.ToString;
 public class AuthResponse {
 
     private String accessToken;
+    private User user;
 }

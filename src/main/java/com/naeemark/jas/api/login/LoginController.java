@@ -46,7 +46,7 @@ public class LoginController {
     public AuthResponse login(@Valid @RequestBody LoginRequest loginRequest){
         logger.info(loginRequest.toString());
 
-        AuthResponse authResponse = new AuthResponse("Hi...you are logged in");
+        AuthResponse authResponse = new AuthResponse("Hi...you are logged in", null);
 
         logger.info(authResponse.toString());
 

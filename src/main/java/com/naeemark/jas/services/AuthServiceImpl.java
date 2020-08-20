@@ -43,8 +43,10 @@ public class AuthServiceImpl implements AuthService {
         try {
             return userRepository.save(new User(signupRequest));
         } catch (DataIntegrityViolationException e) {
+            logger.error(e.getMessage());
             throw new ResponseStatusException(HttpStatus.CONFLICT, ERROR_DUPLICATE_KEY_ATTRIBUTE);
         } catch (Exception e) {
+            logger.error(e.getMessage());
             throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY, ERROR_AUTH_SERVICE);
         }
     }
