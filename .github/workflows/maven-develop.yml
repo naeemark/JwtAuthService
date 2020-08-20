@@ -1,9 +1,8 @@
-name: Master Branch
+name: Develop Branch
 
 on:
   push:
-    branches:
-      - 'develop'
+    branches:[ develop ]
 
 jobs:
 
