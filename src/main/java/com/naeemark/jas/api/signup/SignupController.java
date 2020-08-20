@@ -11,10 +11,12 @@ import io.swagger.annotations.ApiResponses;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
 
@@ -52,11 +54,14 @@ public class SignupController {
             @ApiResponse(code = 400, message = "Validation Error")
     })
     @PostMapping(value = "/signup")
-    public AuthResponse signUp(@Valid @RequestBody SignupRequest signupRequest) {
+    public AuthResponse signUp(@Valid @RequestBody SignupRequest signupRequest)  {
 
         logger.info(signupRequest.toString());
 
         User user = authService.register(signupRequest);
+        if (user == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
         AuthResponse authResponse = new AuthResponse("Hi...you are registered" + user.toString());
 
         logger.info(authResponse.toString());

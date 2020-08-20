@@ -1,12 +1,10 @@
 package com.naeemark.jas.models;
 
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 /**
@@ -16,17 +14,12 @@ import javax.validation.constraints.NotBlank;
  */
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 @ToString
 public class LoginRequest {
 
-    @NotBlank(message = "Username is mandatory")
-    private String userName;
+    @NotBlank(message = "Username or Email is mandatory")
+    private String userNameOrEmail;
 
-    @NotBlank(message = "Email is mandatory")
-    @Email(message = "Must be a valid email address")
-    private String email;
-
-    @NotBlank(message = "Feature Name is mandatory")
+    @NotBlank(message = "Password is mandatory")
     private String password;
 }

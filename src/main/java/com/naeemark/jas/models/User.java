@@ -38,8 +38,8 @@ public class User {
 
     public User(SignupRequest signupRequest) {
         this.name = signupRequest.getName();
-        this.userName= signupRequest.getUserName();
-        this.email= signupRequest.getEmail();
-        this.password= signupRequest.getPassword();
+        this.userName= signupRequest.getUserName().toLowerCase();
+        this.email= signupRequest.getEmail().toLowerCase();
+        this.password= signupRequest.getPassword().toLowerCase();
     }
 }

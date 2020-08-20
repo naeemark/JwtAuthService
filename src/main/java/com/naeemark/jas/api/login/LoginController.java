@@ -43,7 +43,7 @@ public class LoginController {
             @ApiResponse(code = 400, message = "Validation Error")
     })
     @PostMapping(value = "/login")
-    public AuthResponse login(@RequestBody @Valid LoginRequest loginRequest){
+    public AuthResponse login(@Valid @RequestBody LoginRequest loginRequest){
         logger.info(loginRequest.toString());
 
         AuthResponse authResponse = new AuthResponse("Hi...you are logged in");

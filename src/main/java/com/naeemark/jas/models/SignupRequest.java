@@ -1,12 +1,12 @@
 package com.naeemark.jas.models;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 /**
  * Created by Naeem <naeemark@gmail.com>.
@@ -15,7 +15,6 @@ import javax.validation.constraints.NotBlank;
  */
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 @ToString
 public class SignupRequest {
 
@@ -29,6 +28,7 @@ public class SignupRequest {
     @Email(message = "Must be a valid email address")
     private String email;
 
-    @NotBlank(message = "Feature Name is mandatory")
+    @NotBlank(message = "Password is mandatory")
+    @Size(min = 6)
     private String password;
 }
