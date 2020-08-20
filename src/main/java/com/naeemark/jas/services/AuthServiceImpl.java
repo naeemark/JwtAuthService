@@ -3,6 +3,7 @@ package com.naeemark.jas.services;
 import com.naeemark.jas.models.SignupRequest;
 import com.naeemark.jas.models.User;
 import com.naeemark.jas.repositories.UserRepository;
+import com.naeemark.jas.utils.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +42,10 @@ public class AuthServiceImpl implements AuthService {
     public User register(SignupRequest signupRequest) {
 
         try {
-            return userRepository.save(new User(signupRequest));
+            User user = new User(signupRequest);
+            String hashedPassword = StringUtils.getHashedPassword(user.getPassword());
+            user.setPassword(hashedPassword);
+            return userRepository.save(user);
         } catch (DataIntegrityViolationException e) {
             logger.error(e.getMessage());
             throw new ResponseStatusException(HttpStatus.CONFLICT, ERROR_DUPLICATE_KEY_ATTRIBUTE);

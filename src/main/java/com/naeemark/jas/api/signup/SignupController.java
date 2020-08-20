@@ -54,6 +54,7 @@ public class SignupController {
             @ApiResponse(code = 304, message = "Operation was not successful"),
             @ApiResponse(code = 400, message = "Validation Error"),
             @ApiResponse(code = 409, message = "Attribute Conflict"),
+            @ApiResponse(code = 417, message = "Expectations failed"),
             @ApiResponse(code = 422, message = "Request not processable")
     })
     @PostMapping(value = "/signup")
@@ -64,12 +65,11 @@ public class SignupController {
         User user = authService.register(signupRequest);
         if (user != null) {
             String accessToken = JwtUtils.generateJwtToken(user);
-            AuthResponse authResponse = new AuthResponse(accessToken, new User(user.getId(), user.getName()));
+            AuthResponse authResponse = new AuthResponse(accessToken, new User(user.getId(), user.getPassword()));
             logger.info(authResponse.toString());
             return authResponse;
         }
         throw new ResponseStatusException(HttpStatus.EXPECTATION_FAILED);
-
 
     }
 }
