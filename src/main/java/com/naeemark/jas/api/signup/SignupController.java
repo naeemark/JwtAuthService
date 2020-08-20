@@ -51,22 +51,20 @@ public class SignupController {
     @ApiOperation(value = "Signup", response = AuthResponse.class, tags = {"1 - Sign Up"})
     @ApiResponses(value = {
             @ApiResponse(code = 304, message = "Operation was not successful"),
-            @ApiResponse(code = 400, message = "Validation Error")
+            @ApiResponse(code = 400, message = "Validation Error"),
+            @ApiResponse(code = 409, message = "Attribute Conflict"),
+            @ApiResponse(code = 417, message = "Expectations failed"),
+            @ApiResponse(code = 422, message = "Request not processable")
     })
     @PostMapping(value = "/signup")
-    public AuthResponse signUp(@Valid @RequestBody SignupRequest signupRequest)  {
+    public AuthResponse signUp(@Valid @RequestBody SignupRequest signupRequest) {
 
         logger.info(signupRequest.toString());
 
         User user = authService.register(signupRequest);
-        if (user == null) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        if (user != null) {
+            return authService.getAuthResponse(user);
         }
-        AuthResponse authResponse = new AuthResponse("Hi...you are registered" + user.toString());
-
-        logger.info(authResponse.toString());
-
-        return authResponse;
-
+        throw new ResponseStatusException(HttpStatus.EXPECTATION_FAILED);
     }
 }

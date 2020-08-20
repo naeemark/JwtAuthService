@@ -1,5 +1,7 @@
 package com.naeemark.jas.services;
 
+import com.naeemark.jas.models.AuthResponse;
+import com.naeemark.jas.models.LoginRequest;
 import com.naeemark.jas.models.SignupRequest;
 import com.naeemark.jas.models.User;
 
@@ -10,5 +12,7 @@ import com.naeemark.jas.models.User;
  */
 public interface AuthService {
 
-    public User register(SignupRequest signupRequest);
+    User register(SignupRequest signupRequest);
+    User login(LoginRequest loginRequest);
+    AuthResponse getAuthResponse(User user);
 }

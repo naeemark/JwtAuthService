@@ -29,6 +29,6 @@ public class SignupRequest {
     private String email;
 
     @NotBlank(message = "Password is mandatory")
-    @Size(min = 6)
+    @Size(min = 6, max = 15)
     private String password;
 }
