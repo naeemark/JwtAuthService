@@ -1,4 +1,4 @@
-package com.naeemark.jas.models;
+package com.naeemark.jas.api.health;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,7 +14,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Health {
+public class HealthResponse {
 
     private String serviceName;
     private String status;

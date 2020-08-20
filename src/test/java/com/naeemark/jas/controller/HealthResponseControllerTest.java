@@ -13,8 +13,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import static com.naeemark.jas.utils.Constants.SERVICE_NAME;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
@@ -25,13 +23,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(HealthController.class)
 @DisplayName("Unit tests for HealthController")
-class HealthControllerTest {
+class HealthResponseControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @Test
-    @DisplayName("Check Health")
+    @DisplayName("Check HealthResponse")
     void checkHealth() throws Exception{
 
         mockMvc.perform(get("/api/health/"))
