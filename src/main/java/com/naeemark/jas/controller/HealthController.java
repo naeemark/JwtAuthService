@@ -1,7 +1,8 @@
-package com.naeemark.jas.task.controller;
+package com.naeemark.jas.controller;
 
-import com.naeemark.jas.task.JwtAuthServiceApplication;
-import com.naeemark.jas.task.model.Health;
+import com.naeemark.jas.JwtAuthServiceApplication;
+import com.naeemark.jas.model.Health;
+import com.naeemark.jas.utils.Constants;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
@@ -9,8 +10,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import static com.naeemark.jas.task.utils.Constants.SERVICE_NAME;
 
 
 /**
@@ -29,7 +28,7 @@ public class HealthController {
     @GetMapping(value = "/health")
     public Health checkHealth() {
 
-        Health health = new Health(SERVICE_NAME, "OK");
+        Health health = new Health(Constants.SERVICE_NAME, "OK");
 
         logger.info(health.toString());
         return health;

@@ -11,7 +11,7 @@
 	<groupId>com.naeemark.jas</groupId>
 	<artifactId>task</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>JwtAuthService</name>
+	<name>task</name>
 	<description>Spring Boot project for assessment task</description>
 
 	<properties>
@@ -19,6 +19,11 @@
 		<springfox-swagger.version>2.9.2</springfox-swagger.version>
 		<maven-failsafe-plugin.version>2.18.1</maven-failsafe-plugin.version>
 		<maven-surefire-plugin.version>2.18.1</maven-surefire-plugin.version>
+		<code.coverage.exclusions>
+			**/com/naeemark/jas/model/**,
+			**/com/naeemark/jas/utils/**,
+			**/com/naeemark/jas/JwtAuthServiceApplication.java
+		</code.coverage.exclusions>
 	</properties>
 
 	<dependencies>
@@ -78,7 +83,81 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.5</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<!-- attached to Maven test phase -->
+					<execution>
+						<id>report</id>
+						<phase>test</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.sonarsource.scanner.maven</groupId>
+				<artifactId>sonar-maven-plugin</artifactId>
+				<version>3.7.0.1746</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.19.1</version>
+				<dependencies>
+					<dependency>
+						<groupId>org.junit.platform</groupId>
+						<artifactId>junit-platform-surefire-provider</artifactId>
+						<version>1.1.0</version>
+					</dependency>
+					<dependency>
+						<groupId>org.junit.jupiter</groupId>
+						<artifactId>junit-jupiter-engine</artifactId>
+						<version>5.1.0</version>
+					</dependency>
+				</dependencies>
+			</plugin>
 		</plugins>
 	</build>
+
+	<profiles>
+		<profile>
+			<id>sonar</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<sonar.host.url>https://sonarcloud.io/</sonar.host.url>
+				<sonar.organization>naeemark-1</sonar.organization>
+				<sonar.projectKey>naeemark_jwt-auth-service</sonar.projectKey>
+				<sonar.projectName>JwtAuthService</sonar.projectName>
+				<sonar.inclusions>src/main/java/**</sonar.inclusions>
+				<sonar.exclusions>${code.coverage.exclusions}</sonar.exclusions>
+				<sonar.test.exclusions>**/test/**</sonar.test.exclusions>
+				<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+				<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+				<sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>
+				<sonar.language>java</sonar.language>
+			</properties>
+		</profile>
+	</profiles>
+
+	<distributionManagement>
+		<repository>
+			<id>github</id>
+			<name>Assessment Task for AirAsia</name>
+			<url>https://maven.pkg.github.com/naeemark/jwt-auth-system</url>
+		</repository>
+	</distributionManagement>
 
 </project>

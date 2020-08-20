@@ -1,4 +1,4 @@
-package com.naeemark.jas.task.model;
+package com.naeemark.jas.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

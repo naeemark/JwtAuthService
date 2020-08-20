@@ -1,4 +1,4 @@
-package com.naeemark.jas.task;
+package com.naeemark.jas;
 
 import com.google.common.base.Predicates;
 import org.springframework.boot.SpringApplication;

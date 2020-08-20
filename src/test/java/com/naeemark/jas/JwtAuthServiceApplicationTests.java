@@ -1,4 +1,4 @@
-package com.naeemark.jas.task;
+package com.naeemark.jas;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
