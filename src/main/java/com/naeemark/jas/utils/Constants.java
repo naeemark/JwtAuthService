@@ -1,4 +1,4 @@
-package com.naeemark.jas.task.utils;
+package com.naeemark.jas.utils;
 
 /**
  * Created by Naeem <naeemark@gmail.com>.
