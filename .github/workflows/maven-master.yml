@@ -2,8 +2,7 @@ name: Master Branch
 
 on:
   push:
-    branches:
-      - 'master'
+    branches: [ "master" ]
 
 jobs:
 

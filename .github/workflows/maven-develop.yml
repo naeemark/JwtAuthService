@@ -2,7 +2,7 @@ name: Develop Branch
 
 on:
   push:
-    branches:[ "develop" ]
+    branches: [ "develop" ]
 
 jobs:
 
