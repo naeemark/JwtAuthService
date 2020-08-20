@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 public class HealthController {
 
-    private static final Logger logger = LoggerFactory.getLogger(JwtAuthServiceApplication.class);
+    private static final Logger logger = LoggerFactory.getLogger(HealthController.class);
 
     @ApiOperation(value = "Health Check", notes = "Gets health status of the service", response = Health.class)
     @GetMapping(value = "/health")
