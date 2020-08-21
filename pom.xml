@@ -23,7 +23,8 @@
 			**/com/naeemark/jas/JwtAuthServiceApplication.java,
 			**/com/naeemark/jas/JwtAuthServiceApplication.java,
 			**/com/naeemark/jas/repositories/UserRepository.java,
-			**/com/naeemark/jas/services/**
+			**/com/naeemark/jas/services/**,
+			**/com/naeemark/jas/models/**
 		</code.coverage.exclusions>
 	</properties>
 
