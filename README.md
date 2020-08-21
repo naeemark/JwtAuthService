@@ -91,7 +91,7 @@ To set-up the project locally you need to clone this repo, from `master` or `dev
 
 ##### Run Docker Image From Docker hub
 - **[Docker Image Repository](https://hub.docker.com/repository/docker/naeemark/aa-jwt-auth-service)**
-- Run `docker run -d --name jwt-auth-service -p 8180:8080 naeemark/aa-jwt-auth-service`
+- Run `docker run -d --name jwt-auth-service -p 80:8080 naeemark/aa-jwt-auth-service`
 - You may access the running docker app on [`http://localhost/swagger-ui.html`](http://localhost/swagger-ui.html)
 
 
