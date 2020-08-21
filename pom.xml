@@ -20,7 +20,10 @@
 		<maven-failsafe-plugin.version>2.18.1</maven-failsafe-plugin.version>
 		<maven-surefire-plugin.version>2.18.1</maven-surefire-plugin.version>
 		<code.coverage.exclusions>
-			**/com/naeemark/jas/JwtAuthServiceApplication.java
+			**/com/naeemark/jas/JwtAuthServiceApplication.java,
+			**/com/naeemark/jas/JwtAuthServiceApplication.java,
+			**/com/naeemark/jas/repositories/UserRepository.java,
+			**/com/naeemark/jas/services/**
 		</code.coverage.exclusions>
 	</properties>
 
