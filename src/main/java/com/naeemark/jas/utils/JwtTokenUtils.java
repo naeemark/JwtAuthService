@@ -52,7 +52,7 @@ public class JwtTokenUtils {
      * @return
      */
     public static UserResponse validateAuthorization(String authorization) {
-        if (authorization == null) {
+        if (authorization == null || authorization.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, ERROR_AUTHORIZATION_REQUIRED);
         }
         try {
