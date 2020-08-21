@@ -46,9 +46,6 @@ class SignupControllerTest {
     @MockBean
     private UserRepository userRepository;
 
-    String email = "abc@gmail.com";
-    String featureName = "ABC";
-
     @Test
     @DisplayName("POST Signup - success")
     void testSignup_Success() throws Exception {
@@ -189,7 +186,6 @@ class SignupControllerTest {
 
         //given
         when(userRepository.save(user)).thenThrow(DataIntegrityViolationException.class);
-//        when(authService.register(signupRequest)).thenThrow(DataIntegrityViolationException.class);
 
         // when
         mockMvc.perform(post("/api/signup")
