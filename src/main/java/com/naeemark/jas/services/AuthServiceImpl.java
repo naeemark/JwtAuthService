@@ -1,11 +1,11 @@
 package com.naeemark.jas.services;
 
-import com.naeemark.jas.models.AuthResponse;
-import com.naeemark.jas.models.LoginRequest;
-import com.naeemark.jas.models.SignupRequest;
+import com.naeemark.jas.models.response.AuthResponse;
+import com.naeemark.jas.models.request.LoginRequest;
+import com.naeemark.jas.models.request.SignupRequest;
 import com.naeemark.jas.models.User;
 import com.naeemark.jas.repositories.UserRepository;
-import com.naeemark.jas.utils.JwtUtils;
+import com.naeemark.jas.utils.JwtTokenUtils;
 import com.naeemark.jas.utils.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -95,7 +95,7 @@ public class AuthServiceImpl implements AuthService {
      */
     @Override
     public AuthResponse getAuthResponse(User user) {
-        String accessToken = JwtUtils.generateJwtToken(user);
+        String accessToken = JwtTokenUtils.generateToken(user);
         AuthResponse authResponse = new AuthResponse(accessToken, new User(user.getId(), user.getName()));
         logger.info(authResponse.toString());
         return authResponse;

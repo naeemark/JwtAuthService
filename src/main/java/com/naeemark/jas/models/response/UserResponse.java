@@ -1,4 +1,4 @@
-package com.naeemark.jas.api.health;
+package com.naeemark.jas.models.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,8 +14,10 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class HealthResponse {
+public class UserResponse {
 
-    private String serviceName;
-    private String status;
+    private Integer id;
+    private String name;
+    private String userName;
+    private String email;
 }

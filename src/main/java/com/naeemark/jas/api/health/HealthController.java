@@ -1,5 +1,6 @@
 package com.naeemark.jas.api.health;
 
+import com.naeemark.jas.models.response.HealthResponse;
 import com.naeemark.jas.utils.Constants;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

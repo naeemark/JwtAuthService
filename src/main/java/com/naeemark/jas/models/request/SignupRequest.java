@@ -1,4 +1,4 @@
-package com.naeemark.jas.models;
+package com.naeemark.jas.models.request;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

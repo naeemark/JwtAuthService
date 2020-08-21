@@ -1,7 +1,7 @@
 package com.naeemark.jas.api.login;
 
-import com.naeemark.jas.models.AuthResponse;
-import com.naeemark.jas.models.LoginRequest;
+import com.naeemark.jas.models.response.AuthResponse;
+import com.naeemark.jas.models.request.LoginRequest;
 import com.naeemark.jas.models.User;
 import com.naeemark.jas.services.AuthService;
 import io.swagger.annotations.Api;
@@ -48,13 +48,7 @@ public class LoginController {
      * @return Auth Response
      */
     @ApiOperation(value = "Login", response = AuthResponse.class, tags = {"2 - Login"})
-    @ApiResponses(value = {
-            @ApiResponse(code = 304, message = "Operation was not successful"),
-            @ApiResponse(code = 400, message = "Validation Error"),
-            @ApiResponse(code = 404, message = "Not Found"),
-            @ApiResponse(code = 417, message = "Expectations failed"),
-            @ApiResponse(code = 422, message = "Request not processable")
-    })
+    @ApiResponses(value = {@ApiResponse(code = 403, message = "Forbidden")})
     @PostMapping(value = "/login")
     public AuthResponse login(@Valid @RequestBody LoginRequest loginRequest) {
         logger.info(loginRequest.toString());

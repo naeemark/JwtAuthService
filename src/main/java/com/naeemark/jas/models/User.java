@@ -1,6 +1,7 @@
 package com.naeemark.jas.models;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.naeemark.jas.models.request.SignupRequest;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -33,10 +34,10 @@ public class User {
     @Column(unique = true, name = "user_name")
     private String userName;
 
-    @Column(unique = true)
+    @Column(unique = true, name = "email")
     private String email;
 
-    @Column
+    @Column(name = "password")
     private String password;
 
 

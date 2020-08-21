@@ -1,5 +1,6 @@
-package com.naeemark.jas.models;
+package com.naeemark.jas.models.response;
 
+import com.naeemark.jas.models.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

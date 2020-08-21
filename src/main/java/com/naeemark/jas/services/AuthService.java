@@ -1,8 +1,8 @@
 package com.naeemark.jas.services;
 
-import com.naeemark.jas.models.AuthResponse;
-import com.naeemark.jas.models.LoginRequest;
-import com.naeemark.jas.models.SignupRequest;
+import com.naeemark.jas.models.response.AuthResponse;
+import com.naeemark.jas.models.request.LoginRequest;
+import com.naeemark.jas.models.request.SignupRequest;
 import com.naeemark.jas.models.User;
 
 /**
