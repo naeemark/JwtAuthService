@@ -58,4 +58,24 @@ class UserControllerTest {
                 .andDo(print())
                 .andExpect(status().isForbidden());
     }
+
+    @Test
+    @DisplayName("GET User - failureMissingAuth")
+    void testLogin_FailureMissingAuth() throws Exception {
+
+        mockMvc.perform(get("/api/user"))
+                .andDo(print())
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    @DisplayName("GET User - failureAuthEmpty")
+    void testLogin_FailureAuthNull() throws Exception {
+
+        String authorization = "";
+
+        mockMvc.perform(get("/api/user").header("Authorization", authorization))
+                .andDo(print())
+                .andExpect(status().isForbidden());
+    }
 }
