@@ -1,7 +1,7 @@
 package com.naeemark.jas.api.signup;
 
-import com.naeemark.jas.models.AuthResponse;
-import com.naeemark.jas.models.SignupRequest;
+import com.naeemark.jas.models.response.AuthResponse;
+import com.naeemark.jas.models.request.SignupRequest;
 import com.naeemark.jas.models.User;
 import com.naeemark.jas.services.AuthService;
 import io.swagger.annotations.Api;
