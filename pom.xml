@@ -20,8 +20,6 @@
 		<maven-failsafe-plugin.version>2.18.1</maven-failsafe-plugin.version>
 		<maven-surefire-plugin.version>2.18.1</maven-surefire-plugin.version>
 		<code.coverage.exclusions>
-			**/com/naeemark/jas/model/**,
-			**/com/naeemark/jas/utils/**,
 			**/com/naeemark/jas/JwtAuthServiceApplication.java
 		</code.coverage.exclusions>
 	</properties>
@@ -153,6 +151,7 @@
 				<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
 				<sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>
 				<sonar.language>java</sonar.language>
+				<sonar.java.binaries>target/classes</sonar.java.binaries>
 			</properties>
 		</profile>
 	</profiles>
