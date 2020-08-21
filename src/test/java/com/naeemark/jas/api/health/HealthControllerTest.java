@@ -1,6 +1,5 @@
-package com.naeemark.jas.controller;
+package com.naeemark.jas.api.health;
 
-import com.naeemark.jas.api.health.HealthController;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -18,19 +17,19 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 /**
  * Created by Naeem <naeemark@gmail.com>.
  * <p>
- * Created on: 2020-08-20
+ * Created on: 2020-08-21
  */
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(HealthController.class)
 @DisplayName("Unit tests for HealthController")
-class HealthResponseControllerTest {
+class HealthControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @Test
     @DisplayName("Check HealthResponse")
-    void checkHealth() throws Exception{
+    void checkHealth_success() throws Exception{
 
         mockMvc.perform(get("/api/health/"))
                 .andDo(print())
