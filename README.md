@@ -11,12 +11,13 @@ Demonstration of Requirements understanding, proposing a solution and implementa
 
 ## Distribution ##
 
- - **[Swagger API Docs](https://jwt-auth-service.naeemark.usw1.kubesail.org/swagger-ui.html)** - **Bonus Requirement**
+ - **[Swagger API Docs - Deployed on Kubesail](https://jwt-auth-service.naeemark.usw1.kubesail.org/swagger-ui.html)** - **Bonus Requirement**
  - A [Postman Collection](https://www.getpostman.com/collections/828a77388af0f03f51bc) is available for all the API's (live).
  - **[API Integrations FrontEnd Demo - Heroku Deployment](https://jwt-auth-webapp-service.herokuapp.com/)** - **Bonus Requirement**
  - **[ReactFrontAppRepository](https://github.com/naeemark/jwt-auth-webapp-service.git)** (WIP) - **Bonus Requirement**
  - A [docker repository](https://hub.docker.com/repository/registry-1.docker.io/naeemark/aa-jwt-auth-service) is created, latest image can be downloaded
  - **[Sonar Project](https://sonarcloud.io/dashboard?id=naeemark_jwt-auth-service)** - **Bonus Requirement**
+ - **[Kubesail - Deployment File](.kubesail/deployment.yml)** - **Bonus Requirement**
 
 ---
 
