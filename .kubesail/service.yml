@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: jwt-auth-service
+  namespace: naeemark
+  selfLink: /api/v1/namespaces/naeemark/services/jwt-auth-service
+  uid: 953dec39-7ef5-4b05-9ac0-199230d85704
+  resourceVersion: "722169120"
+  creationTimestamp: 2020-08-21T06:18:42Z
+  labels:
+    app: myapp
+spec:
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: http-ports
+  selector:
+    app: jwt-auth-service
+  clusterIP: 10.2.34.218
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}
